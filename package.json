@@ -1,6 +1,10 @@
 {
-  "name": "@paciolan/remote-component-starter",
+  "name": "@cesar-f-invicara/remote-component-starter",
   "version": "1.0.0-semantic-versioning",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cesar-f-invicara/remote-component-starter.git"
+  },
   "description": "Remote Component Starter",
   "private": true,
   "browser": "dist/main.js",
@@ -19,6 +23,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "caniuse-lite": "^1.0.30001564",
     "react": "^16.14.0"
   },
   "devDependencies": {
