@@ -8,6 +8,11 @@
   "description": "Remote Component Starter",
   "private": true,
   "browser": "dist/main.js",
+  "browserslist": [
+    "chrome >= 107",
+    "firefox >= 105",
+    "edge >= 107"
+  ],
   "author": "Paciolan",
   "license": "MIT",
   "scripts": {
@@ -23,8 +28,21 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/multimonth": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11",
+    "@invicara/platform-api": "^4.2.23",
     "caniuse-lite": "^1.0.30001564",
-    "react": "^16.14.0"
+    "css-loader": "^5.2.7",
+    "lodash-es": "^4.17.21",
+    "moment": "^2.30.1",
+    "react": "^16.14.0",
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.77.1",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

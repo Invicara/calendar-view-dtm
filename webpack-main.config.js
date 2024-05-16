@@ -34,16 +34,44 @@ module.exports = {
   },
   externals: {
     ...externals,
-    "remote-component.config.js": "remote-component.config.js"
+    "remote-component.config.js": "remote-component.config.js",
+    "@fullcalendar/core": "@fullcalendar/core",
+    "@fullcalendar/daygrid": "@fullcalendar/daygrid",
+    "@fullcalendar/multimonth": "@fullcalendar/multimonth",
+    "@fullcalendar/react": "@fullcalendar/react"
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.js$|jsx/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    targets: "defaults",
+                    include: [
+                      "@babel/plugin-proposal-optional-chaining" // parsing fails on optional operator without this
+                    ]
+                  }
+                ],
+                "@babel/preset-react"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(scss)$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "sass-loader" }
+        ]
       }
     ]
   }
