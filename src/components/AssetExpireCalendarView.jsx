@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import multiMonthPlugin from '@fullcalendar/multimonth';
 import { IafItemSvc } from '@invicara/platform-api'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 import moment from "moment";
 import './AssetExpireCalendar.scss'
 
@@ -202,4 +202,5 @@ const AssetExpireCalendarView = (props) => {
 
 }
 
-export default withRouter(AssetExpireCalendarView)
+// export default withRouter(AssetExpireCalendarView)
+export default AssetExpireCalendarView
