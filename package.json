@@ -5,6 +5,7 @@
     "type": "git",
     "url": "https://github.com/cesar-f-invicara/remote-component-starter.git"
   },
+  "main": "dist/main.js",
   "description": "Remote Component Starter",
   "private": true,
   "browser": "dist/main.js",
@@ -29,10 +30,6 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@fullcalendar/core": "^6.1.11",
-    "@fullcalendar/daygrid": "^6.1.11",
-    "@fullcalendar/multimonth": "^6.1.11",
-    "@fullcalendar/react": "^6.1.11",
     "@invicara/platform-api": "^4.2.23",
     "caniuse-lite": "^1.0.30001564",
     "css-loader": "^5.2.7",
@@ -54,6 +51,10 @@
     "@babel/runtime": "^7.12.5",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/multimonth": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11",
     "@paciolan/eslint-config-react": "^1.0.4",
     "@paciolan/remote-component": "^2.10.2",
     "babel-eslint": "^10.1.0",
@@ -79,6 +80,12 @@
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "peerDependencies": {
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/multimonth": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11"
   },
   "husky": {
     "hooks": {

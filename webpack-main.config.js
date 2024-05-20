@@ -34,11 +34,7 @@ module.exports = {
   },
   externals: {
     ...externals,
-    "remote-component.config.js": "remote-component.config.js",
-    "@fullcalendar/core": "@fullcalendar/core",
-    "@fullcalendar/daygrid": "@fullcalendar/daygrid",
-    "@fullcalendar/multimonth": "@fullcalendar/multimonth",
-    "@fullcalendar/react": "@fullcalendar/react"
+    "remote-component.config.js": "remote-component.config.js"
   },
   module: {
     rules: [
