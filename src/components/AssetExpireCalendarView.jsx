@@ -3,7 +3,6 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import multiMonthPlugin from '@fullcalendar/multimonth';
 import { IafItemSvc } from '@invicara/platform-api'
-import { withRouter } from 'react-router-dom'
 import moment from "moment";
 import './AssetExpireCalendar.scss'
 
@@ -215,4 +214,4 @@ console.log('Adam handler?.config?.collectionName', handler?.config?.collectionN
 
 }
 
-export default withRouter(AssetExpireCalendarView)
+export default AssetExpireCalendarView
