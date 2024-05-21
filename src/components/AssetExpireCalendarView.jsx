@@ -10,6 +10,7 @@ import './AssetExpireCalendar.scss'
 let ctx = null
 
 const AssetExpireCalendarView = (props) => {
+  console.log('ADam props', props)
   const { history, handler } = props;
   const [collections, setCollections] = useState()
   const [assetData, setAssetData] = useState()
@@ -31,7 +32,7 @@ console.log('Adam handler?.config?.collectionName', handler?.config?.collectionN
     await IafItemSvc.getAllNamedUserItems({
       query: {
         _itemClass: 'NamedUserCollection',
-        _userType: handler?.config?.collectionName
+        _userType: "iaf_ext_asset_coll"
       }
     }).then((colls) => {
       setCollections(colls)
