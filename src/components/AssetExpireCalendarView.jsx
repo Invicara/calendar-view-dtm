@@ -27,7 +27,7 @@ const AssetExpireCalendarView = (props) => {
   }, [collections])
 
   const getCollections = async () => {
-
+console.log('Adam handler?.config?.collectionName', handler?.config?.collectionName)
     await IafItemSvc.getAllNamedUserItems({
       query: {
         _itemClass: 'NamedUserCollection',
@@ -42,6 +42,15 @@ const AssetExpireCalendarView = (props) => {
   const getItems = async () => {
     let calendarProperty = handler?.config?.calendarProperty
     let options = { page: { _pageSize: 3000 } }
+
+    const res =  IafItemSvc.getRelatedItems(
+      collections[0]._userItemId,
+      {},
+      ctx,
+      options)
+
+    console.log('Adam res', res)
+
     IafItemSvc.getRelatedItems(
       collections[0]._userItemId,
       {},
@@ -81,6 +90,7 @@ const AssetExpireCalendarView = (props) => {
             assetData.push(obj)
           }
         })
+        console.log('Adam assetData', assetData)
         setAssetData(assetData)
         const finalAssetData = Object.values(assetData.reduce(
           (map, el) => {
@@ -91,6 +101,7 @@ const AssetExpireCalendarView = (props) => {
             return map;
           }, {}
         ));
+        console.log('Adam finalAssetData', finalAssetData)
         setCalendarEventsa(finalAssetData)
       })
   }
