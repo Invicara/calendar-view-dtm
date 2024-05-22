@@ -8,10 +8,9 @@ import './AssetExpireCalendar.scss'
 
 let ctx = null
 
-const AssetExpireCalendarView = ( { history, handler } ) => {
-  console.log('ADam history', history)
-  console.log('ADam handler', handler)
-  // const { history, handler } = props;
+const AssetExpireCalendarView = ( props ) => {
+  console.log('ADam props', props)
+  const { history, handler } = props;
   const [collections, setCollections] = useState()
   const [assetData, setAssetData] = useState()
   const [calendarEvents, setCalendarEventsa] = useState([])
@@ -24,7 +23,7 @@ const AssetExpireCalendarView = ( { history, handler } ) => {
   }, [])
 
   useEffect(() => {
-    // getItems()
+    getItems()
   }, [collections])
 
   const getCollections = async () => {
