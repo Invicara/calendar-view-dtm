@@ -8,7 +8,10 @@
   "main": "dist/main.js",
   "description": "Remote Component Starter",
   "private": true,
-  "browser": "dist/main.js",
+  "browser": {
+    "fs": false,
+    "path": false
+    },
   "browserslist": [
     "chrome >= 107",
     "firefox >= 105",
@@ -34,6 +37,7 @@
     "@fullcalendar/daygrid": "^6.1.11",
     "@fullcalendar/multimonth": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
+    "@invicara/ipa-core": "^3.0.16",
     "@invicara/platform-api": "^4.2.23",
     "caniuse-lite": "^1.0.30001564",
     "css-loader": "^5.2.7",

@@ -68,7 +68,14 @@ module.exports = {
           { loader: "css-loader" },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.(css)$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
       }
     ]
-  }
+  },
+  node: { fs: "empty" },
+  // devtool: options.devtool,
+  target: "web"
 };
