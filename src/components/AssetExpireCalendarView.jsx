@@ -23,7 +23,7 @@ const AssetExpireCalendarView = ( props ) => {
   }, [])
 
   useEffect(() => {
-    getItems()
+    // getItems()
   }, [collections])
 
   const getCollections = async () => {
@@ -32,7 +32,8 @@ console.log('Adam handler?.config?.collectionName', handler?.config?.collectionN
 const res = await IafItemSvc.getAllNamedUserItems({
   query: {
     _itemClass: 'NamedUserCollection',
-    _userType: "iaf_ext_asset_coll"
+    _userType: "iaf_ext_asset_coll",
+    _namespaces: ['dtm001_TsMl5XyK']
   }
 })
 console.log('Adam res', res)
@@ -40,7 +41,8 @@ console.log('Adam res', res)
     await IafItemSvc.getAllNamedUserItems({
       query: {
         _itemClass: 'NamedUserCollection',
-        _userType: "iaf_ext_asset_coll"
+        _userType: "iaf_ext_asset_coll",
+        _namespaces: ['dtm001_TsMl5XyK']
       }
     }).then((colls) => {
       console.log('Adam colls', colls)
@@ -53,7 +55,7 @@ console.log('Adam res', res)
     let calendarProperty = handler?.config?.calendarProperty
     let options = { page: { _pageSize: 3000 } }
 
-    const res =  IafItemSvc.getRelatedItems(
+    const res = await IafItemSvc.getRelatedItems(
       collections[0]._userItemId,
       {},
       ctx,
