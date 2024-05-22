@@ -5,6 +5,7 @@ import multiMonthPlugin from '@fullcalendar/multimonth';
 import { IafItemSvc } from '@invicara/platform-api'
 import moment from "moment";
 import './AssetExpireCalendar.scss'
+import {ScriptHelper} from "@invicara/ipa-core/modules/IpaUtils";
 
 let ctx = null
 
@@ -28,15 +29,16 @@ const AssetExpireCalendarView = ( props ) => {
 
   const getCollections = async () => {
 console.log('Adam handler?.config?.collectionName', handler?.config?.collectionName)
-
-const res = await IafItemSvc.getAllNamedUserItems({
-  query: {
-    _itemClass: 'NamedUserCollection',
-    _userType: "iaf_ext_asset_coll",
-    _namespaces: ['dtm001_TsMl5XyK']
-  }
-})
-console.log('Adam res', res)
+const scriptRes =  await ScriptHelper.executeScript('getCollections', handler);   
+console.log('Adam script result', scriptRes)
+// const res = await IafItemSvc.getAllNamedUserItems({
+//   query: {
+//     _itemClass: 'NamedUserCollection',
+//     _userType: "iaf_ext_asset_coll",
+//     _namespaces: ['dtm001_TsMl5XyK']
+//   }
+// })
+// console.log('Adam res', res)
 
     await IafItemSvc.getAllNamedUserItems({
       query: {

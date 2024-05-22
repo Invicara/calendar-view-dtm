@@ -49,6 +49,10 @@ module.exports = {
           { loader: "css-loader" },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.(css)$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
       }
     ]
   },
@@ -56,5 +60,8 @@ module.exports = {
     alias: {
       "remote-component.config.js": path.resolve("./remote-component.config.js")
     }
-  }
+  },
+  node: { fs: "empty" },
+  // devtool: options.devtool,
+  target: "web"
 };
