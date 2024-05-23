@@ -5,12 +5,10 @@ import multiMonthPlugin from '@fullcalendar/multimonth';
 import { IafItemSvc, IafSession } from '@invicara/platform-api'
 import moment from "moment";
 import './AssetExpireCalendar.scss'
-import {ScriptHelper} from "@invicara/ipa-core/modules/IpaUtils";
 
 let ctx = null
 
 const AssetExpireCalendarView = ( props ) => {
-  console.log('ADam props', props)
   const { history, handler } = props;
   const [collections, setCollections] = useState()
   const [assetData, setAssetData] = useState()
@@ -30,7 +28,6 @@ const AssetExpireCalendarView = ( props ) => {
   };
 
   useEffect(() => {
-    console.log('Adam endPointConfig', endPointConfig)
     IafSession.setConfig(endPointConfig);
     getCollections()
   }, [])
@@ -40,44 +37,19 @@ const AssetExpireCalendarView = ( props ) => {
   }, [collections])
 
   const getCollections = async () => {
-
-// const res = await IafItemSvc.getAllNamedUserItems({
-//   query: {
-//     _itemClass: 'NamedUserCollection',
-//     _userType: "iaf_ext_asset_coll",
-//     _namespaces: ['dtm001_TsMl5XyK']
-//   }
-// })
-// console.log('Adam res', res)
-
     await IafItemSvc.getAllNamedUserItems({
       query: {
         _itemClass: 'NamedUserCollection',
         _userType: "iaf_ext_asset_coll"
       }
     }).then((colls) => {
-      console.log('Adam colls', colls)
       setCollections(colls)
     })
-
-    // console.log('Adam handler?.config?.collectionName', handler?.config?.collectionName)
-    // const scriptRes =  await ScriptHelper.executeScript('getCollections', handler);   
-    // console.log('Adam script result', scriptRes)
-
   }
 
   const getItems = async () => {
     let calendarProperty = handler?.config?.calendarProperty
     let options = { page: { _pageSize: 3000 } }
-
-    const res = await IafItemSvc.getRelatedItems(
-      collections[0]._userItemId,
-      {},
-      ctx,
-      options)
-
-    console.log('Adam getItems res', res)
-
     IafItemSvc.getRelatedItems(
       collections[0]._userItemId,
       {},
@@ -117,7 +89,6 @@ const AssetExpireCalendarView = ( props ) => {
             assetData.push(obj)
           }
         })
-        console.log('Adam getItems assetData', assetData)
         setAssetData(assetData)
         const finalAssetData = Object.values(assetData.reduce(
           (map, el) => {
@@ -128,7 +99,6 @@ const AssetExpireCalendarView = ( props ) => {
             return map;
           }, {}
         ));
-        console.log('Adam getItems finalAssetData', finalAssetData)
         setCalendarEventsa(finalAssetData)
       })
   }
