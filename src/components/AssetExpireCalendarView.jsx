@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import multiMonthPlugin from '@fullcalendar/multimonth';
-import { IafItemSvc } from '@invicara/platform-api'
+import { IafItemSvc, IafSession } from '@invicara/platform-api'
 import moment from "moment";
 import './AssetExpireCalendar.scss'
 import {ScriptHelper} from "@invicara/ipa-core/modules/IpaUtils";
@@ -19,7 +19,19 @@ const AssetExpireCalendarView = ( props ) => {
   const [modalAssets, setModalAssets] = useState([])
   const [assetModalData, setAssetModalData] = useState([])
 
+  const endPointConfig = {
+    itemServiceOrigin: 'https://sandbox-api.invicara.com',
+    passportServiceOrigin: 'https://sandbox-api.invicara.com',
+    fileServiceOrigin: 'https://sandbox-api.invicara.com',
+    datasourceServiceOrigin: 'https://sandbox-api.invicara.com',
+    graphicsServiceOrigin: 'https://sandbox-api.invicara.com',
+    pluginBaseUrl: 'https://sandbox-api.invicara.com/downloads/IPAPlugins/',
+    baseRoot: 'http://localhost:8083/digitaltwin'
+  };
+
   useEffect(() => {
+    console.log('Adam endPointConfig', endPointConfig)
+    IafSession.setConfig(endPointConfig);
     getCollections()
   }, [])
 
@@ -28,9 +40,7 @@ const AssetExpireCalendarView = ( props ) => {
   }, [collections])
 
   const getCollections = async () => {
-console.log('Adam handler?.config?.collectionName', handler?.config?.collectionName)
-const scriptRes =  await ScriptHelper.executeScript('getCollections', handler);   
-console.log('Adam script result', scriptRes)
+
 // const res = await IafItemSvc.getAllNamedUserItems({
 //   query: {
 //     _itemClass: 'NamedUserCollection',
@@ -50,6 +60,10 @@ console.log('Adam script result', scriptRes)
       console.log('Adam colls', colls)
       setCollections(colls)
     })
+
+    console.log('Adam handler?.config?.collectionName', handler?.config?.collectionName)
+    const scriptRes =  await ScriptHelper.executeScript('getCollections', handler);   
+    console.log('Adam script result', scriptRes)
 
   }
 
