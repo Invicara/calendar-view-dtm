@@ -53,8 +53,7 @@ const AssetExpireCalendarView = ( props ) => {
     await IafItemSvc.getAllNamedUserItems({
       query: {
         _itemClass: 'NamedUserCollection',
-        _userType: "iaf_ext_asset_coll",
-        _namespaces: ['dtm001_TsMl5XyK']
+        _userType: "iaf_ext_asset_coll"
       }
     }).then((colls) => {
       console.log('Adam colls', colls)
